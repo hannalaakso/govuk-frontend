@@ -1,19 +1,33 @@
-# Publishing pre-release of GOV.UK Frontend
+# Publish pre-release of GOV.UK Frontend
 
-We use pre-releases when:
-- We are working on a new contribution and want to see it in the Design System website
-- We want to try an experimental feature as if it's pushed to npm.
+Use pre-releases when you:
+- [work on developing a component or pattern](https://design-system.service.gov.uk/community/develop-a-component-or-pattern/) for the GOV.UK Design System
+- want to trial an experimental feature (guidance on trialling experimental features is in development)
 
-This is done by pushing the files used for a GOV.UK Frontend release (the contents of the `package` directory) to a new branch which can be installed by npm as if it was a released npm package.
+> :warning:Your projects should never depend on a pre-released GOV.UK Frontend package. This is because someone could remove the GitHub branch containing the pre-release package at any time. For this reason, never use a pre-released package in a production setting.
 
-No changes get published to npm as part of the process.
+## What happens when you pre-release GOV.UK Frontend
 
-1. Checkout the branch you want to pre-release and pull latest changes.
+When you pre-release GOV.UK Frontend, this creates a GitHub branch. This branch contains the GOV.UK Frontend `/package` directory with your trial changes.
 
-2. Run `nvm use` to ensure you are using the right version of Node.js and npm.
+Projects can point to this branch in their package.json, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). No changes are published to the GOV.UK Frontend npm package as part of this process.
 
-3. Run `npm install` to ensure you have the latest dependencies installed.
+## Publish a pre-release
 
-4. Run `npm run pre-release`. This will create and push a new branch `pre-release-[your-branch-name-here]` to GitHub.
+1. Run `git checkout -b BRANCH-FOR-PRE-RELEASE` to create a new local branch of the GOV.UK Frontend repo.
 
-5. Use the command provided by the script to update other projects to use the pre-release.
+2. Run `git pull` to pull the latest changes.
+
+3. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
+
+4. Run `npm install` to make sure you have the latest dependencies installed.
+
+5. Make a code change and commit the changes you've made.
+
+6. Run `npm run pre-release` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
+
+## Preview your changes
+
+1. If you need to update an existing project to use the pre-release, copy the command that displays after the `Success!`message. If the `Success!` message does not display, [contact the Design System team](https://design-system.service.gov.uk/#support) and we'll help you.
+
+2. Navigate to the project in the command line and run the success notification command. Running this command makes the project point to the pre-release branch, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). You can now preview your trial changes to GOV.UK Frontend.
