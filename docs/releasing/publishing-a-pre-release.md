@@ -16,7 +16,7 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 1. Run `git checkout -b BRANCH-FOR-PRE-RELEASE` to create a new local branch of the GOV.UK Frontend repo.
 
-2. Run `git pull` to pull the latest changes.
+2. If necessary, run `git pull` to pull the latest changes.
 
 3. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
 
